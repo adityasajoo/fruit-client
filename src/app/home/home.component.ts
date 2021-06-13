@@ -15,16 +15,22 @@ files:any
   @ViewChild('imageInput') fileInput:any;
 
   inputChange(event:any){
- this.files = this.fileInput.nativeElement.files;
+    
+
+    console.log(event.target.files[0]);
     if(event.target.files){
       var reader = new FileReader();
       reader.onload=(event:any)=>{
         this.succ=true
         this.api.img = event.target.result;
+       
+
       }
-      this.sendFile = event.target.files[0]
-      console.log(this.sendFile)
-reader.readAsDataURL(this.sendFile)
+    reader.readAsDataURL(event.target.files[0])
+    this.api.fetchResults({file:event.target.files}).subscribe(res =>{
+      console.log(res);
+    })
+
 
     }
   }
@@ -35,6 +41,11 @@ onSubmit(){
 }
 
   ngOnInit(): void {
+    this.api.welcome().subscribe(result=>{
+      console.log("Result ",result);
+    })
   }
+
+
 
 }
