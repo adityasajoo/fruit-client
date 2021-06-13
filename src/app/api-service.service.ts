@@ -11,8 +11,11 @@ export class ApiServiceService {
 
   constructor(private http:HttpClient) { }
 
-public fetchResults(body:any):Observable<any>{
-  return this.http.post(this.url,body)
+public fetchResults(files:any):Observable<any>{
+  const filedata:FormData = new FormData()
+  filedata.append('file',files[0],files[0].name)
+
+  return this.http.post(this.url,filedata)
 }
 
 }
