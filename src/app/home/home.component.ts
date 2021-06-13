@@ -23,13 +23,13 @@ files:any
       reader.onload=(event:any)=>{
         this.succ=true
         this.api.img = event.target.result;
-       
 
       }
-    reader.readAsDataURL(event.target.files[0])
-    this.api.fetchResults({file:event.target.files}).subscribe(res =>{
-      console.log(res);
-    })
+      this.sendFile = event.target.files[0]
+    reader.readAsDataURL(this.sendFile)
+    // this.api.fetchResults({file:event.target.files}).subscribe(res =>{
+    //   console.log(res);
+    // })
 
 
     }
@@ -37,7 +37,7 @@ files:any
 
 onSubmit(){
 
-  this.api.fetchResults(this.files)
+  this.api.fetchResults(this.sendFile)
 }
 
   ngOnInit(): void {

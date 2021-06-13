@@ -12,9 +12,13 @@ export class ApiServiceService {
 
   constructor(private http:HttpClient) { }
 
-public fetchResults(body:any):Observable<any>{
+public fetchResults(files:any):Observable<any>{
+ 
+  const formdata = new FormData()
+  formdata.append('file',files,files.name)
+
   let sendUrl = `${this.url}/predict?model=inceptionV3.h5`
-  return this.http.post(sendUrl,body)
+  return this.http.post(sendUrl,formdata)
 }
 
   public welcome():Observable<any>{
