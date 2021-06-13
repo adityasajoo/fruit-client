@@ -1,6 +1,6 @@
 <div class="container">
 
-<img [src]="api.url" (click)="imageInput.click()" alt="" >
+<img [src]="api.img" (click)="imageInput.click()" alt="" >
 
 <div class="m-5">
     <input #imageInput hidden="true" type="file" onclick="this.value=null" (change)="inputChange($event)" accept="image/*"/>

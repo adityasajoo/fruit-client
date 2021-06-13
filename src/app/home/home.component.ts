@@ -17,7 +17,7 @@ succ=false
       var reader = new FileReader();
       reader.onload=(event:any)=>{
         this.succ=true
-        this.api.url = event.target.result;
+        this.api.img = event.target.result;
       }
 reader.readAsDataURL(event.target.files[0])
     }
