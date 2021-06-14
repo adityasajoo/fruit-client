@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ApiServiceService} from 'src/app/api-service.service'
 import { ViewChild } from '@angular/core';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -10,8 +11,10 @@ import { ViewChild } from '@angular/core';
 export class HomeComponent implements OnInit {
 succ=false
 sendFile :any
-  constructor(public api:ApiServiceService) { }
+  constructor(private api:ApiServiceService) { }
 files:any
+img='https://m3placement.com/wp-content/uploads/2021/03/image-placeholder-350x350-1.png'
+subs= new Subscription()
   @ViewChild('imageInput') fileInput:any;
 
   inputChange(event:any){
@@ -22,7 +25,7 @@ files:any
       var reader = new FileReader();
       reader.onload=(event:any)=>{
         this.succ=true
-        this.api.img = event.target.result;
+        this.img = event.target.result;
 
       }
       this.sendFile = event.target.files[0]
@@ -38,14 +41,24 @@ files:any
 onSubmit(){
 
   this.api.fetchResults(this.sendFile)
+  this.api.sendData(this.img)
 }
 
   ngOnInit(): void {
-    this.api.welcome().subscribe(result=>{
-      console.log("Result ",result);
-    })
+    // this.api.welcome().subscribe(result=>{
+    //   console.log("Result ",result);
+    // })
+
+
+ this.subs= this.api.reciever().subscribe(x=>{
+      this.img=x
+         })
+
+      
   }
 
-
+ngOnDestroy(){
+this.subs.unsubscribe()
+}
 
 }
