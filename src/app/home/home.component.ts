@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ApiServiceService} from 'src/app/api-service.service'
+import {ApiServiceService} from 'src/app/service/api-service.service'
 import { ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 
