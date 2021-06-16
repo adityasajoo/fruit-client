@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ApiServiceService } from '../api-service.service';
+import {ApiServiceService} from 'src/app/service/api-service.service'
 
 @Component({
   selector: 'app-result',

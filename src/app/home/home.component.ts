@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ApiServiceService} from 'src/app/api-service.service'
+import {ApiServiceService} from 'src/app/service/api-service.service'
 import { ViewChild } from '@angular/core';
 
 @Component({
@@ -37,7 +37,9 @@ files:any
 
 onSubmit(){
 
-  this.api.fetchResults(this.sendFile)
+  this.api.fetchResults(this.sendFile).subscribe(result=>{
+    console.log(result);
+  })
 }
 
   ngOnInit(): void {
