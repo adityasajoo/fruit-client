@@ -20,7 +20,7 @@ public fetchResults(files:any):Observable<any>{
   formdata.append('file',files,files.name)
   formdata.append('model','inceptionV3.h5')
 
-  let sendUrl = `${this.url}/predict?model=inceptionV3.h5`
+  let sendUrl = `${this.url}/predict`
   return this.http.post(sendUrl,formdata)
 }
 

@@ -40,14 +40,16 @@ subs= new Subscription()
 
 onSubmit(){
 
-  this.api.fetchResults(this.sendFile)
+  this.api.fetchResults(this.sendFile).subscribe(result=>{
+    console.log(result);
+  })
   this.api.sendData(this.img)
 }
 
   ngOnInit(): void {
-    // this.api.welcome().subscribe(result=>{
-    //   console.log("Result ",result);
-    // })
+    this.api.welcome().subscribe(result=>{
+      console.log("Result ",result);
+    })
 
 
  this.subs= this.api.reciever().subscribe(x=>{
