@@ -1,18 +1,95 @@
-<div class="container">
+<div class="con">
 
-<img [src]="img" (click)="imageInput.click()" alt="" >
+  <div class="d-flex  rower">
 
-<div class="m-5">
-    <form action="" enctype='multipart/form-data'>
+    <div class="col-md-6 main p-2">
+      <div class="mains px-3">
+        <div class="head px-3">Welcome to automatic Fruit Grading</div>
 
-        <input #imageInput hidden="true" type="file" onclick="this.value=null" (change)="inputChange($event)" accept="image/*"/>
+        <div class="m-3">
+
+          <img [src]="img" (click)="imageInput.click()" *ngIf="img" alt="" >
+          <form action="" enctype='multipart/form-data'>
 
 
-    </form>
-  
-<button mat-flat-button color="primary" (click)="imageInput.click()">Upload here</button>
 
-<button mat-raised-button color='primary' class="mx-2" [routerLink]="succ?'/result':'/'" routerLinkActive="router-link-active" (click)="onSubmit()" > Send</button>
-</div>
+            <input #imageInput hidden="true" type="file" onclick="this.value=null" (change)="inputChange($event)"
+              accept="image/*" />
 
+
+          </form>
+          <div class="buttons d-flex my-3">
+            <button mat-raised-button class="back" (click)="imageInput.click()">UPLOAD HERE</button>
+
+            <button mat-raised-button class="mx-3   back" [routerLink]="succ?'/result':'/'" (click)="onSubmit()">SEND </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6  back pads">
+      <div class="right "></div>
+      <!-- <img [src]="getImage()" alt=""> -->
+
+    </div>
+
+
+
+  </div>
+
+
+  <div class="fruits  p-4">
+    <div class="sub px-4 my-3"> Fruits We Grade </div>
+    <div class="container px-4">
+      <div class="row">
+        <div class="col-lg-4 p-4">
+          <mat-card class="h-100 mx-2 orange">
+            <mat-card-content>
+              <div class="app">Orange</div>
+              <div class="img-con d-flex">
+                <img class="mx-auto" src="assets/orange1.png" alt="">
+              </div>
+              <div class="des p-2">An orange is a type of citrus fruit. They are a very good
+                source of Vitamin C. It also contains many other minerals like Potassium and iron which is beneficial for BP patients. Orange helps in fighting common infecting germs during weather change, making new cells.It also contains Vitamin D which keeps our boy fresh.</div>
+
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <div class="col-lg-4 p-4">
+          <mat-card class="h-100 mx-2 apple">
+            <mat-card-content>
+              <div class="app">Apple</div>
+              <div class="img-con d-flex">
+                <img class="mx-auto" src="assets/apple1.png" alt="">
+              </div>
+              <div class="des p-2"> An apple is an edible fruit produced by an apple tree (Malus domestica). Apples are
+                used to make apple juice, cider, vinegar, apple sauce and many different kinds of desserts.Apples
+                contain Vitamin C as well as many other antioxidants.
+                Apples are also a good source of fiber which good for your heart and bones .</div>
+
+
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <div class="col-lg-4 p-4">
+          <mat-card class="h-100 mx-2 banana">
+            <mat-card-content>
+              <div class="ban">Banana</div>
+              <div class="img-con d-flex">
+                <img class="mx-auto" src="assets/banana1.png" alt="">
+              </div>
+
+              <div class="desc p-2">A banana is an edible berry fruit. They can be directly eaten by peeling off its upper layer,or used in making juices or shakes, cakes, chips, sweets, etc.
+
+                It's rich in Vitamin A, B, C and also contains many minerals like magnesium, potassium, sodium, calcium, iron, etc. which are helpful for the development of the body.
+
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
 </div>

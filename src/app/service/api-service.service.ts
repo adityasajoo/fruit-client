@@ -10,9 +10,12 @@ export class ApiServiceService {
   url ="http://localhost:5000"
  
 private apiSubject = new ReplaySubject<any>()
+public loading = new BehaviorSubject(null);
   
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient) { 
+    
+  }
 
 public fetchResults(files:any):Observable<any>{
  

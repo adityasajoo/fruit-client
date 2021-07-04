@@ -1,5 +1,150 @@
 img{
-    width: 500px;
-    height: 500px;
+    width: 200px;
+    height: 200px;
 
 }
+
+.main{
+    background-color: rgba($color: #000000, $alpha: .85);
+}
+
+
+.main{
+    display: flex;
+align-items: center;
+ justify-content: center;
+ padding-bottom: 3rem;
+}
+
+.rower{
+    height: 100vh;
+}
+
+
+.pads{
+    padding: 6rem;
+    display: block;
+}
+
+.con{
+ width: 100%;
+
+}
+
+.head{
+    font-size: 45px;
+    line-height: normal;
+    color: white;
+}
+
+// .rower{
+//     height: 100;
+// }
+
+.right{
+ 
+    width: 100%;
+    height: 100%;
+ background-position: center center;
+ background-size: cover;
+ background-repeat:no-repeat ;
+ backface-visibility: hidden;
+animation: slidebg 10s linear infinite 0s;
+animation-timing-function: ease-in-out;
+background-image: url('../../assets/orange1.png');
+ 
+}
+
+.back{
+    background-color: #ffa600;
+    animation: colorc 10s linear infinite 0s;
+animation-timing-function: ease-in-out;
+
+}
+.colors{
+    color: #ffa600;
+    animation: colorbs 10s linear infinite 0s;
+animation-timing-function: ease-in-out;
+
+}
+.orange{
+    background-color: #ffa600; 
+    border-radius: 10px;
+}
+.apple{
+    background-color: #ff4f4b;
+    border-radius: 10px;
+}
+
+.banana{
+    background-color: #ffd300;
+    border-radius: 10px;
+}
+
+.app{
+    font-size: 17px;
+    color: white;
+    font-weight: 500;
+
+}
+.des{
+    font-size: 14px;
+    color: white;
+}
+.desc{
+    font-size: 14px;
+    color: #464A53;
+}
+.ban{
+    font-size: 17px;
+    color: #464A53;
+    font-weight: 500;
+}
+
+.img-con{
+    img{
+        width: 200px;
+        height: 200px;
+    }
+}
+@keyframes slidebg {
+    10%{
+        background-image: url('../../assets/orange1.png');
+        
+    }
+   40%{
+        background-image: url('../../assets/apple1.png');
+    }
+    75%{
+        background-image: url('../../assets/banana1.png');
+    }
+}
+
+@keyframes colorc {
+    10%{
+        background-color: #ffa600;
+    }
+   40%{
+    background-color: #ff4f4b;
+ 
+    }
+    75%{
+        background-color: #ffd300;
+    }
+}
+
+
+
+.sub{
+    color: #464A53;
+    font-size: 30px;
+    font-weight: 500;
+}
+
+@media  screen and (max-width:500px) {
+    .pads{
+        display: none;
+    }
+}
+
+

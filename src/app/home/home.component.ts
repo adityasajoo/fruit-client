@@ -63,4 +63,10 @@ ngOnDestroy(){
 this.subs.unsubscribe()
 }
 
+getImage(){
+  
+  return 'assets/orange.png'
+}
+
+
 }
