@@ -1,7 +1,58 @@
-
 <div class="container">
-    <div>Result page</div>
-    <img [src]="img" alt="">
 
-    <h1>{{res}}</h1>
+
+
+
+    <div class="d-flex" *ngIf="loader">
+        <div class="loader mx-auto">
+            <img class="d-flex mx-auto" src="assets/loader.svg" alt="">
+            <div class="quote"><span class="did">Did you know?</span> {{getQuotes()}}</div>
+        </div>
+
+    </div>
+
+
+    <div class="main p-4" *ngIf="!loader">
+
+
+        <div class="row p-3">
+
+            <div class="col-lg-4 p-4">
+                <div class="result my-3">Uploaded Image</div>
+                <div class="img-container p-2">
+                    <img [src]="'data:image/jpeg;base64,'+inpImage | safeHtml" alt="">
+                </div>
+                
+            </div>
+            <div class="col-lg-8 p-4">
+                <div class="result my-3">Result</div>
+                <div class="row">
+                    <div class="col-lg-6 p-4" *ngFor="let pic of pictures">
+
+                        <mat-card class="h-100 cards">
+                            <mat-card-content class="px-3">
+                                <div class="img-container d-flex">
+                                    <img class="mx-auto" [src]="'data:image/jpeg;base64,'+ pic.image   |safeHtml" alt="">
+                                </div>
+
+                                <div class="res my-2 text-center"> {{pic.fruit}}</div>
+                            </mat-card-content>
+                        </mat-card>
+
+
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+
+
+
+    </div>
+
 </div>

@@ -10,7 +10,7 @@ export class ApiServiceService {
   url ="http://localhost:5000"
  
 private apiSubject = new ReplaySubject<any>()
-public loading = new BehaviorSubject(null);
+public loading = new BehaviorSubject<any>(null);
   
 
   constructor(private http:HttpClient) { 

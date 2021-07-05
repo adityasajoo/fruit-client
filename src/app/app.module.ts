@@ -11,11 +11,14 @@ import { HttpClientModule } from '@angular/common/http';
 
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
+import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
+import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    ResultComponent
+    ResultComponent,
+    SafeHtmlPipe
   ],
   imports: [
     BrowserModule,
@@ -23,8 +26,8 @@ import {MatCardModule} from '@angular/material/card';
     BrowserAnimationsModule,
     MatButtonModule,
     HttpClientModule,
-    MatCardModule
-  ],
+    MatCardModule,
+    MatSnackBarModule  ],
   providers: [],
   bootstrap: [AppComponent]
 })
