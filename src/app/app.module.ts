@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,12 +14,16 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 import { SafeHtmlPipe } from './pipes/safe-html.pipe';
+import { ResultsComponent } from './results/results.component';
+import { RecipeComponent } from './recipe/recipe.component';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ResultComponent,
-    SafeHtmlPipe
+    SafeHtmlPipe,
+    ResultsComponent,
+    RecipeComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +32,8 @@ import { SafeHtmlPipe } from './pipes/safe-html.pipe';
     MatButtonModule,
     HttpClientModule,
     MatCardModule,
-    MatSnackBarModule  ],
+    MatSnackBarModule,
+    MatExpansionModule  ],
   providers: [],
   bootstrap: [AppComponent]
 })

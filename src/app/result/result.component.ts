@@ -12,9 +12,16 @@ export class ResultComponent implements OnInit {
   loader=false
 
   img = 'https://m3placement.com/wp-content/uploads/2021/03/image-placeholder-350x350-1.png'
-  public isLoading:any;
+  public isLoading=true;
+
   constructor(private api: ApiServiceService,private router:Router) { 
-    api.loading.subscribe(val => val === null ? this.router.navigateByUrl("/") : this.isLoading = val)
+    api.loading.subscribe(val => val===null ? this.router.navigateByUrl("/home"):this.isLoading=val);
+    api.result.subscribe(val => {
+      if(val.data){
+          this.inpImage = val.data.input_image
+          this.pictures = val.data.predicted
+      }
+    });
   }
 
   res: any
@@ -37,14 +44,14 @@ readImg(img:any){
 
   ngOnInit(): void {
 
-    this.api.reciever().subscribe(x => {
-      const res = x.data
+    // this.api.reciever().subscribe(x => {
+    //   const res = x.data
 
-      this.inpImage = res.input_image
-      this.pictures = res.predicted
+    //   this.inpImage = res.input_image
+    //   this.pictures = res.predicted
 
-      console.log(res,"res")
-    })
+    //   console.log(res,"res")
+    // })
 
     //copied
     window.addEventListener("beforeunload", function (e) {

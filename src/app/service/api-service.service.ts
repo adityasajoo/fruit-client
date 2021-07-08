@@ -11,14 +11,13 @@ export class ApiServiceService {
  
 private apiSubject = new ReplaySubject<any>()
 public loading = new BehaviorSubject<any>(null);
-  
+public result = new BehaviorSubject<any>({});  
 
   constructor(private http:HttpClient) { 
     
   }
 
 public fetchResults(files:any):Observable<any>{
- 
   const formdata = new FormData()
   formdata.append('file',files,files.name)
   formdata.append('model','inceptionV3.h5')
@@ -27,7 +26,7 @@ public fetchResults(files:any):Observable<any>{
   return this.http.post(sendUrl,formdata)
 }
 
-  public welcome():Observable<any>{
+  public connect():Observable<any>{
     return this.http.get(this.url);
   }
 

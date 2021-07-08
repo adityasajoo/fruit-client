@@ -1,9 +1,6 @@
 <div class="container">
-
-
-
-
-    <div class="d-flex" *ngIf="loader">
+<h1>Hi</h1>
+    <div class="d-flex" *ngIf="isLoading">
         <div class="loader mx-auto">
             <img class="d-flex mx-auto" src="assets/loader.svg" alt="">
             <div class="quote"><span class="did">Did you know?</span> {{getQuotes()}}</div>
@@ -12,7 +9,7 @@
     </div>
 
 
-    <div class="main p-4" *ngIf="!loader">
+    <div class="main p-4" *ngIf="!isLoading">
 
 
         <div class="row p-3">

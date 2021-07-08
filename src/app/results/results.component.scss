@@ -1,0 +1,78 @@
+.my-container{
+    margin-top: 20px;
+}
+
+.row{
+    display: flex;
+    justify-content: center;
+    
+}
+
+.main-card{
+    width: 70%;
+    height: 250px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.main-card{
+    img{
+        width: auto;
+    }
+
+    .fruits{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 50%;
+        align-items: center;
+
+    }
+}
+
+.title{
+    text-align: center;
+    margin-top: 25px;
+    h3{
+        font-weight: bolder;
+
+    }
+}
+
+.predicted{
+    margin-top: 10px;
+}
+
+.fruit{
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 200px;
+    height: 250px;
+    margin: 10px 20px;
+}
+
+.fruit{
+    img{
+        width: 100%;
+    }
+    .fruit-name{
+        text-align: center;
+    }
+}
+
+
+.recipes{
+    width: 70%;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    margin-bottom: 20px;
+}
+
+.loader{
+    img{
+        height: 60vh;
+
+    }
+}

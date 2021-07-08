@@ -11,6 +11,7 @@ import {
 import {
   ResultComponent
 } from './result/result.component';
+import { ResultsComponent } from './results/results.component';
 
 const routes: Routes = [{
     path: 'home',
@@ -19,6 +20,9 @@ const routes: Routes = [{
   {
     path: 'result',
     component: ResultComponent
+  },{
+    path:'results',
+    component:ResultsComponent
   },
   {
     path: '',

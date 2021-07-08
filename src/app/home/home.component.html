@@ -9,9 +9,7 @@
         <div class="m-3">
 
           <img [src]="img" (click)="imageInput.click()" *ngIf="img" alt="" >
-          <form action="" enctype='multipart/form-data'>
-
-
+          <form  enctype='multipart/form-data'>
 
             <input #imageInput hidden="true" type="file" onclick="this.value=null" (change)="inputChange($event)"
               accept="image/*" />

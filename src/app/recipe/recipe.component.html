@@ -1,0 +1,37 @@
+<div *ngIf="recipies.length">
+  <div class="title">
+    <h3> Recomended Recipies</h3>
+  </div>
+  <div class="row">
+    <mat-card class="recipes"  >
+      <div *ngFor="let item of recipies" >
+      <mat-accordion >
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{item.Food}}
+            </mat-panel-title>
+            <mat-panel-description>
+              <!-- Banana -->
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div class="expansion-content">
+            <div class="expansion-img">
+              <img
+                src="{{item.Image}}"
+                alt="err">
+            </div>
+            <div class="expantion-desp">
+              <!-- <p>Tasty Cake</p> -->
+              <button mat-raised-button color="warn">
+                <a href="{{item.Link}}" mat-menu-item target="_blank">Know More</a>
+                </button>
+            </div>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+      
+    </div>
+    </mat-card>
+  </div>
+</div>
