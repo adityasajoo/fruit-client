@@ -2,24 +2,26 @@
 
   <div class="d-flex  rower">
 
-    <div class="col-md-6 main p-2">
-      <div class="mains px-3">
-        <div class="head px-3">Welcome to automatic Fruit Grading</div>
+    <div class="col-md-6 main p-2 d-flex justify-content-center">
+      <div class="mains px-3 ">
+        <div class="head text-center">Automatic Fruit Grading</div>
 
         <div class="m-3">
+          <div class="d-flex justify-content-center">
+            <img [src]="img" (click)="imageInput.click()" *ngIf="img" alt="" >
+            <form  enctype='multipart/form-data'>
+  
+              <input #imageInput hidden="true" type="file" onclick="this.value=null" (change)="inputChange($event)"
+                accept="image/*" />
+  
+  
+            </form>
 
-          <img [src]="img" (click)="imageInput.click()" *ngIf="img" alt="" >
-          <form  enctype='multipart/form-data'>
-
-            <input #imageInput hidden="true" type="file" onclick="this.value=null" (change)="inputChange($event)"
-              accept="image/*" />
-
-
-          </form>
-          <div class="buttons d-flex my-3">
+          </div>
+          <div class="buttons d-flex justify-content-center my-3">
             <button mat-raised-button class="back" (click)="imageInput.click()">UPLOAD HERE</button>
 
-            <button mat-raised-button class="mx-3   back"  (click)="onSubmit()">SEND </button>
+            <button mat-raised-button class="ml-3   back"  (click)="onSubmit()">SEND </button>
           </div>
 
         </div>
@@ -37,7 +39,7 @@
 
 
   <div class="fruits  p-4">
-    <div class="sub px-4 my-3"> Fruits We Grade </div>
+    <div class="sub px-4 my-3 "> Fruits We Grade </div>
     <div class="container px-4">
       <div class="row">
         <div class="col-lg-4 p-4">

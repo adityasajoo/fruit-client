@@ -16,7 +16,8 @@ succ=false
 sendFile :any
   constructor(private api:ApiServiceService,private router:Router,private _snackBar: MatSnackBar) { }
 files:any
-img='https://m3placement.com/wp-content/uploads/2021/03/image-placeholder-350x350-1.png'
+// img='https://m3placement.com/wp-content/uploads/2021/03/image-placeholder-350x350-1.png'
+img='https://i.pinimg.com/originals/ba/d6/66/bad666ef68eaffcf6d5b6d607751d337.jpg'
 subs= new Subscription()
 
   @ViewChild('imageInput') fileInput:any;
