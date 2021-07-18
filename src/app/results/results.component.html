@@ -1,49 +1,55 @@
 <div class="container my-container">
 
-  <div  *ngIf="isLoading">
+  <div *ngIf="isLoading">
     <div class="loader mx-auto">
       <img class="d-flex mx-auto" src="assets/loader.svg" alt="">
-      <!-- <div class="quote"><span class="did">Did you know?</span> {{getQuotes()}}</div> -->
+
+      <div class="quote text-center"><span class="did">Did you know?</span> {{getQuotes()}}</div>
     </div>
   </div>
 
   <div class="main p-4" *ngIf="!isLoading">
 
-    <mat-card>
-      <div class="row">
-        <mat-card class="main-card">
-          <img
-          [src]="'data:image/jpeg;base64,'+result.input_image | safeHtml"
-          alt="err">
-          <div class="fruits">
-            <ul >Fruits in the Image :
-              <div *ngFor="let fruit of result.fruits"><li>{{fruit}}</li></div>
-            
-            </ul>
-            <button mat-raised-button color="warn">Upload new Image</button>
+    <div class="row wid justify-content-center">
+      <mat-card class="main-card">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="img-container">
+
+              <img [src]="'data:image/jpeg;base64,'+result.input_image | safeHtml" alt="err">
+            </div>
+          </div>
+          <div class="fruits col-lg-6">
+            <div class="head">Fruits in the Image :</div>
+            <div *ngFor="let fruit of result.fruits">
+              {{fruit}}
+            </div>
+
+
+            <button mat-raised-button color="warn" routerLink="/">Upload new Image</button>
+          </div>
+        </div>
+
+
+      </mat-card>
+    </div>
+    <div class="title">
+      <h3>Predicted Fruits</h3>
+    </div>
+    <div class="row predicted">
+      <div *ngFor="let fruit of result.predicted">
+        <mat-card class="fruit">
+          <img [src]="'data:image/jpeg;base64,'+ fruit.image | safeHtml" alt="err">
+          <div class="fruit-name">
+            <p>{{ fruit.fruit }}</p>
           </div>
         </mat-card>
       </div>
-      <div class="title">
-        <h3>Predicted Fruits</h3>
-      </div>
-      <div class="row predicted" >
-        <div *ngFor="let fruit of result.predicted">
-          <mat-card class="fruit" >
-            <img
-              [src]="'data:image/jpeg;base64,'+ fruit.image | safeHtml"
-              alt="err">
-            <div class="fruit-name">
-              <p>{{ fruit.fruit }}</p>
-            </div>
-          </mat-card>
-        </div>
-      </div>
+    </div>
 
-      <app-recipe></app-recipe>
+    <app-recipe></app-recipe>
 
 
-    </mat-card>
 
   </div>
 

@@ -26,6 +26,19 @@ export class ResultsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    window.addEventListener("beforeunload", function (e) {
+      var confirmationMessage = "\o/";
+      e.returnValue = confirmationMessage; // Gecko, Trident, Chrome 34+
+      return confirmationMessage; // Gecko, WebKit, Chrome <34
+    });
   }
 
+  facts= ["Apples contain antioxidants, vitamin C, fiber, and several other nutrients that may boost heart, brain, and digestive health.",
+  "Oranges are high in this important nutrient, which keeps your bones, organs, and muscles strong.",
+"Potassium in bananas is good for your heart health and blood pressure"]
+
+
+getQuotes(){
+return this.facts[Math.floor(Math.random() * this.facts.length)];
+}
 }

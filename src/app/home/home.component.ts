@@ -40,6 +40,7 @@ onSubmit(){
   if(this.succ){
     this.api.loading.next(true);
     this.api.fetchResults(this.sendFile).subscribe(result=>{
+      console.log('res',result)
       this.api.result.next(result);
       this.api.loading.next(false);
     })
@@ -78,5 +79,26 @@ getImage(){
   return 'assets/orange.png'
 }
 
+
+store(namesUk:any){
+
+  namesUk = "pid"
+  if(this.check()){
+ let data= JSON.parse(localStorage.getItem("names")!) 
+  console.log(data) 
+data.push({pid:22})
+
+localStorage.setItem("names",JSON.stringify(data))
+// for(let d of data){
+//   console.log(d,"locals")
+// }
+  }
+
+// localStorage.setItem('data', JSON.stringify(["Harry"]));
+}
+
+check(){
+  return !! localStorage.getItem('data')
+}
 
 }

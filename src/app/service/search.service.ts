@@ -24,23 +24,24 @@ export class SearchService {
 
   constructor(private http: HttpClient, private apiService: ApiServiceService) {
     apiService.result.subscribe(val => {
+      console.log(val,"receipe")
       if (val.data) {
         this.fruits = val.data.fruits;
         //for recipies
         let str = '';
         this.fruits.forEach(item =>
-          str = str + 'fruits=' + mapFruit(item) +'&'
+          str = str + 'fruits=' + mapFruit(item) + '&'
         )
-        this.searchRecipes(str).subscribe(val=>{
+        this.searchRecipes(str).subscribe(val => {
           this.searchResult.next(val);
         })
-        
+
 
       }
     })
   }
 
-  public searchRecipes(str: any): Observable < any > {
+  public searchRecipes(str: any): Observable<any> {
     return this.http.get(`${this.url}/recommend/api?${str}`)
   }
 }
