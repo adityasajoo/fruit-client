@@ -19,18 +19,19 @@
               <div class="head my-2">Uploaded Image</div>
               <div class="input-img">
                 <img
-                  src="https://www.healthyeating.org/images/default-source/home-0.0/nutrition-topics-2.0/general-nutrition-wellness/2-2-2-3foodgroups_fruits_detailfeature_thumb.jpg?sfvrsn=7abe71fe_4"
+                  [src]="'data:image/jpg;base64,'+result.input_image | safeHtml"
                   alt="err">
               </div>
             </div>
 
             <div class="col-lg-6 col-sm-12 my-2">
-              <div class="predict mx-5 px-3 ">
+              <div class="predict mx-5 px-3 " >
                 <div class="head my-2">Predicted fruit</div>
-                <div class="fruits  my-3">Apple</div>
-                <div class="fruits my-3">Apple</div>
-                <div class="fruits my-3">Apple</div>
-                <div class="fruits my-3">Apple</div>
+                <div *ngFor="let fruit of result.fruits">
+                  <div class="fruits  my-3">{{fruit | formatFruitName}}</div>
+                 
+                </div>
+
 
                 <button mat-raised-button class="but">UPLOAD NEW IMAGE</button>
               </div>
@@ -39,65 +40,22 @@
             <div class="col-lg-12 my-3 ">
 
               <div class="my-2 head">Predicted Fruit</div>
-              <div class="pred-img my-3 row">
-                <div class="col-lg-4">
+              <div class="pred-img my-3 row" >
+                <div class="col-lg-4" *ngFor="let fruit of result.predicted" >
                   <div class="card my-2">
                     <img class="card-img-top"
-                      src="https://images.unsplash.com/photo-1579613832125-5d34a13ffe2a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+                      [src]="'data:image/jpg;base64,'+fruit.image | safeHtml"
                       alt="Card image cap">
                     <div class="card-body">
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                        the card's content.</p>
+                      <p class="card-text text-center">{{fruit.fruit|formatFruitName}}</p>
                     </div>
                   </div>
                 </div>
-
-                <div class="col-lg-4 ">
-                  <div class="card my-2">
-                    <img class="card-img-top"
-                      src="https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-                      alt="Card image cap">
-                    <div class="card-body">
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                        the card's content.</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-4">
-                  <div class="card my-2">
-                    <img class="card-img-top"
-                      src="https://www.healthyeating.org/images/default-source/home-0.0/nutrition-topics-2.0/general-nutrition-wellness/2-2-2-3foodgroups_fruits_detailfeature_thumb.jpg?sfvrsn=7abe71fe_4"
-                      alt="Card image cap">
-                    <div class="card-body">
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                        the card's content.</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-4">
-                  <div class="card my-2">
-                    <img class="card-img-top"
-                      src="https://images.unsplash.com/photo-1547514701-42782101795e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=634&q=80"
-                      alt="Card image cap">
-                    <div class="card-body">
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                        the card's content.</p>
-                    </div>
-                  </div>
-                </div>
-
-
               </div>
             </div>
 
           </div>
         </div>
-
-
-
-
-
-
 
 
 

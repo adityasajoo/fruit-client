@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiServiceService } from '../service/api-service.service';
+import { SearchService } from '../service/search.service';
 
 @Component({
   selector: 'app-results',
@@ -8,20 +9,24 @@ import { ApiServiceService } from '../service/api-service.service';
   styleUrls: ['./results.component.scss']
 })
 export class ResultsComponent implements OnInit {
-  //public isLoading=true;
-  public isLoading=false;
+  public isLoading=true;
   public result : any;
+  public recipes:any;
 
-  constructor(apiService:ApiServiceService,router:Router) { 
+  constructor(apiService:ApiServiceService,searchService:SearchService,router:Router) { 
     //check if data fetched
-    // apiService.loading.subscribe(val => val===null?router.navigateByUrl("/home"):this.isLoading=val);
+   apiService.loading.subscribe(val => val===null?router.navigateByUrl("/home"):this.isLoading=val);
+
+   searchService.searchResult.subscribe(val=>{
+     this.recipes = val?.data;
+     console.log(this.recipes);
+   })
 
     //subscribe to result
     apiService.result.subscribe(val=>{
       if(val.data){
         this.result = val.data;
       }
-      console.log(val);
     })
   
   }

@@ -42,6 +42,6 @@ export class SearchService {
   }
 
   public searchRecipes(str: any): Observable<any> {
-    return this.http.get(`${this.url}/recommend/api?${str}`)
+    return this.http.get(`${this.url}/recommend/api/v2?${str}`)
   }
 }
