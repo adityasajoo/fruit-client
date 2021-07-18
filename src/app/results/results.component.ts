@@ -8,12 +8,13 @@ import { ApiServiceService } from '../service/api-service.service';
   styleUrls: ['./results.component.scss']
 })
 export class ResultsComponent implements OnInit {
-  public isLoading=true;
+  //public isLoading=true;
+  public isLoading=false;
   public result : any;
 
   constructor(apiService:ApiServiceService,router:Router) { 
     //check if data fetched
-    apiService.loading.subscribe(val => val===null?router.navigateByUrl("/home"):this.isLoading=val);
+    // apiService.loading.subscribe(val => val===null?router.navigateByUrl("/home"):this.isLoading=val);
 
     //subscribe to result
     apiService.result.subscribe(val=>{
@@ -26,11 +27,11 @@ export class ResultsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    window.addEventListener("beforeunload", function (e) {
-      var confirmationMessage = "\o/";
-      e.returnValue = confirmationMessage; // Gecko, Trident, Chrome 34+
-      return confirmationMessage; // Gecko, WebKit, Chrome <34
-    });
+    // window.addEventListener("beforeunload", function (e) {
+    //   var confirmationMessage = "\o/";
+    //   e.returnValue = confirmationMessage; // Gecko, Trident, Chrome 34+
+    //   return confirmationMessage; // Gecko, WebKit, Chrome <34
+    // });
   }
 
   facts= ["Apples contain antioxidants, vitamin C, fiber, and several other nutrients that may boost heart, brain, and digestive health.",
