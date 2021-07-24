@@ -1,6 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Observable,from, Subject, BehaviorSubject, ReplaySubject } from 'rxjs';
+import { Observable,EMPTY, of,BehaviorSubject, ReplaySubject } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {catchError, retry, shareReplay} from "rxjs/operators";
+
+const httpOptions = {
+  headers : new HttpHeaders({
+    'Content-Type':'application/json'
+  })
+}
 
 @Injectable({
   providedIn: 'root'
@@ -26,10 +33,15 @@ public fetchResults(files:any):Observable<any>{
   return this.http.post(sendUrl,formdata)
 }
 
-  public connect():Observable<any>{
-    return this.http.get(this.url);
-  }
-
+checkConnection():Observable<any>{
+  return this.http.get(this.url,httpOptions).pipe(
+    retry  (3),
+    catchError(()=>{
+      return EMPTY;
+    }),
+    shareReplay()
+  );
+}
 
 public sendData(msg:any){
  this.apiSubject.next(msg)

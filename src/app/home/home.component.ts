@@ -4,6 +4,7 @@ import { ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { SearchService } from '../service/search.service';
 
 
 @Component({
@@ -12,9 +13,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+public connection = false;
 succ=false
 sendFile :any
-  constructor(private api:ApiServiceService,private router:Router,private _snackBar: MatSnackBar) { }
+  constructor(private api:ApiServiceService,private searchApi:SearchService, private router:Router,private _snackBar: MatSnackBar) { }
 files:any
 // img='https://m3placement.com/wp-content/uploads/2021/03/image-placeholder-350x350-1.png'
 img='https://i1.wp.com/www.slntechnologies.com/wp-content/uploads/2017/08/ef3-placeholder-image.jpg?ssl=1'
@@ -60,13 +62,16 @@ onSubmit(){
 
 
   ngOnInit(): void {
-    // this.api.welcome().subscribe(result=>{
-    //   console.log("Result ",result);
-    // })
+    this.api.checkConnection().subscribe(res=>{
+      if(res.status=="success") this.connection=true;
+    })
 
- this.subs= this.api.reciever().subscribe(x=>{
-      this.img=x
-         })
+
+    this.searchApi.searchResult.next({});
+
+    this.subs = this.api.reciever().subscribe(x => {
+      this.img = x
+    })
 
       
   }

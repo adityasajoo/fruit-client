@@ -18,8 +18,15 @@ export class ResultsComponent implements OnInit {
    apiService.loading.subscribe(val => val===null?router.navigateByUrl("/home"):this.isLoading=val);
 
    searchService.searchResult.subscribe(val=>{
-     this.recipes = val?.data;
-     console.log(this.recipes);
+     if(val.data){
+      this.recipes = val.data;
+      console.log(this.recipes.recipes);
+      this.recipes.recipes.forEach((i:any) => {
+        console.log(i.youtube);
+        
+      });
+
+     }
    })
 
     //subscribe to result

@@ -1,4 +1,9 @@
-<div class="con">
+  <div *ngIf="!connection">
+    <app-error err="Could'nt connect to the Flask server."></app-error>
+  </div>
+
+
+<div class="con" *ngIf="connection">
 
   <div class="d-flex  rower">
 

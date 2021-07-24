@@ -1,16 +1,19 @@
-<nav class="text-center my-nav py-3">AI Driven Automatic Fruit Grading</nav>
+<nav *ngIf="!isLoading" class="text-center my-nav py-3">AI Driven Automatic Fruit Grading</nav>
 
-<div class="container-fluid p-3 my-container">
+<div class="container-fluid p-3 my-container h-100"  >
 
-  <div *ngIf="isLoading">
-    <div class="loader mx-auto">
-      <img class="d-flex mx-auto" src="assets/loader.svg" alt="">
 
-      <div class="quote text-center"><span class="did">Did you know?</span> {{getQuotes()}}</div>
-    </div>
+<div *ngIf="isLoading">
+  <div class="loader mx-auto">
+    <img class="d-flex mx-auto" src="assets/loader.svg" alt="">
+
+    <div class="quote text-center"><span class="did">Did you know?</span> {{getQuotes()}}</div>
   </div>
+</div>
 
-  <div class="main p-4" *ngIf="!isLoading">
+<div  *ngIf="!isLoading">
+
+  <div class="main p-4" *ngIf="result.count else noFruit">
     <div class="row ">
       <div class="col-lg-7 col-sm-12 ">
         <div class="input-div">
@@ -26,20 +29,20 @@
 
             <div class="col-lg-6 col-sm-12 my-2">
               <div class="predict mx-5 px-3 " >
-                <div class="head my-2">Predicted fruit</div>
+                <div class="head my-2">Result</div>
                 <div *ngFor="let fruit of result.fruits">
                   <div class="fruits  my-3">{{fruit | formatFruitName}}</div>
                  
                 </div>
 
-
-                <button mat-raised-button class="but">UPLOAD NEW IMAGE</button>
+                
+                <button mat-raised-button class="but" routerLink="/home"> UPLOAD NEW IMAGE</button>
               </div>
             </div>
 
             <div class="col-lg-12 my-3 ">
 
-              <div class="my-2 head">Predicted Fruit</div>
+              <div class="my-2 head">Predicted Fruit(s)</div>
               <div class="pred-img my-3 row" >
                 <div class="col-lg-4" *ngFor="let fruit of result.predicted" >
                   <div class="card my-2">
@@ -70,70 +73,21 @@
         <div class="head my-2">Popular Receipes</div>
 
 
-        <div class="row">
-          <div class="col-lg-6">
+        <div class="row" *ngIf="recipes" >
+          <div class="col-lg-6" *ngFor="let recipe of recipes.recipes" >
             <div class="card my-2">
               <div class="videos">
-                <iframe src="https://www.youtube.com/embed/ykhcBt_xxUE" title="YouTube video player" frameborder="0"
+                <iframe [src]="recipe.youtube | safeHtml" title="YouTube video player" frameborder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowfullscreen></iframe>
               </div>
 
               <div class="card-body">
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                  card's content.</p>
+                <p class="card-text">{{recipe.Food}}</p>
               </div>
             </div>
 
           </div>
-
-          <div class="col-lg-6">
-            <div class="card my-2">
-              <div class="videos">
-                <iframe src="https://www.youtube.com/embed/ykhcBt_xxUE" title="YouTube video player" frameborder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen></iframe>
-              </div>
-
-              <div class="card-body">
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                  card's content.</p>
-              </div>
-            </div>
-
-          </div>
-
-          <div class="col-lg-6">
-            <div class="card my-2">
-              <div class="videos">
-                <iframe src="https://www.youtube.com/embed/ykhcBt_xxUE" title="YouTube video player" frameborder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen></iframe>
-              </div>
-
-              <div class="card-body">
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                  card's content.</p>
-              </div>
-            </div>
-
-          </div>
-          <div class="col-lg-6">
-            <div class="card my-2">
-              <div class="videos">
-                <iframe src="https://www.youtube.com/embed/ykhcBt_xxUE" title="YouTube video player" frameborder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen></iframe>
-              </div>
-
-              <div class="card-body">
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                  card's content.</p>
-              </div>
-            </div>
-
-          </div>
-
 
 
         </div>
@@ -148,4 +102,25 @@
 
 
   </div>
+</div>
+
+<ng-template #noFruit>
+  <div class="row no-fruit-container">
+    <div class="col-lg-3">
+      <div class="head my-2">Uploaded Image</div>
+      <div class="input-img">
+        <img
+          [src]="'data:image/jpg;base64,'+result.input_image | safeHtml"
+          alt="err">
+      </div>
+      <div class="my-2 text-white text-center">No fruits detected in the image</div>
+      <div class="btn-container">
+        <button mat-raised-button class="but" routerLink="/home"> UPLOAD NEW IMAGE</button>
+
+      </div>
+
+    </div>
+  </div>
+</ng-template>
+
 </div>

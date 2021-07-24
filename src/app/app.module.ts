@@ -17,6 +17,7 @@ import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 import { ResultsComponent } from './results/results.component';
 import { RecipeComponent } from './recipe/recipe.component';
 import { FormatFruitNamePipe } from './pipes/format-fruit-name.pipe';
+import { ErrorComponent } from './error/error.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +26,8 @@ import { FormatFruitNamePipe } from './pipes/format-fruit-name.pipe';
     SafeHtmlPipe,
     ResultsComponent,
     RecipeComponent,
-    FormatFruitNamePipe
+    FormatFruitNamePipe,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
