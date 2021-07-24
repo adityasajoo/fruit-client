@@ -7,7 +7,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class ApiServiceService {
   img='https://m3placement.com/wp-content/uploads/2021/03/image-placeholder-350x350-1.png'
-  url ="http://localhost:5000"
+  // url ="http://localhost:5000"
+  url = "https://flask-server.loca.lt/"
  
 private apiSubject = new ReplaySubject<any>()
 public loading = new BehaviorSubject<any>(null);

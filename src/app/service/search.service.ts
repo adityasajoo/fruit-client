@@ -19,7 +19,8 @@ import {
 export class SearchService {
   public fruits = new BehaviorSubject({});
   public searchResult = new BehaviorSubject<any>({});
-  private url = "http://localhost:3000";
+  // private url = "http://localhost:3000";
+  url = "https://fruit-search-engine.herokuapp.com/"
 
 
   constructor(private http: HttpClient, private apiService: ApiServiceService) {
