@@ -20,7 +20,7 @@ export class SearchService {
   public fruits = new BehaviorSubject({});
   public searchResult = new BehaviorSubject<any>({});
   // private url = "http://localhost:3000";
-  url = "https://fruit-search-engine.herokuapp.com/"
+  url = "https://fruit-search-engine.herokuapp.com"
 
 
   constructor(private http: HttpClient, private apiService: ApiServiceService) {
@@ -45,4 +45,23 @@ export class SearchService {
   public searchRecipes(str: any): Observable<any> {
     return this.http.get(`${this.url}/recommend/api/v2?${str}`)
   }
+
+
+  getPosition(): Promise<any>
+  {
+    return new Promise((resolve, reject) => {
+
+      navigator.geolocation.getCurrentPosition(resp => {
+
+          resolve({lng: resp.coords.longitude, lat: resp.coords.latitude});
+        },
+        err => {
+          reject(err);
+        });
+    });
+
+  }
+
+
+
 }

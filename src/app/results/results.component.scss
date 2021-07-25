@@ -1,12 +1,12 @@
 .my-nav{
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 500;
 
 
 }
 
 .quote{
-    font-size: 16px;
+    font-size: 18px;
 }
 
 .loader{
@@ -45,15 +45,20 @@ height: 150px !important;
 }
 
 .head{
-    font-size: 18px;
+    font-size: 25px;
     font-weight: 500;
-    color: white;
+    color:#464A53 ;
 }
 
+.did{
+    font-weight: 500;
+}
 
 .fruits{
-    font-size: 16px;
-    color: white;
+    font-size: 22px;
+    color: linear-gradient(315deg, #ff7878 0%, #ff0000 74%);
+    font-weight: 500;
+    
 }
 
 
@@ -62,16 +67,19 @@ iframe{
 }
 
 nav{
-    color: white !important;
-    background-color: #000000;
-    background-image: linear-gradient(147deg, #000000 0%, #04619f 74%);
+    color: #464A53 !important;
 }
 
-.my-container{
-    background-color: #000000;
-    background-image: linear-gradient(147deg, #000000 0%, #04619f 74%);
-// background-color: #a55c1b;
-// background-image: linear-gradient(315deg, #a55c1b 0%, #000000 74%);
+.my-container, nav{
+
+    background: #FFAFBD;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #ffc3a0, #FFAFBD);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #ffc3a0, #FFAFBD); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+
+
+// background-color: #d9d9d9;
+// background-image: linear-gradient(315deg, #d9d9d9 0%, #f6f2f2 84%);
 }
 
 .no-fruit-container{
@@ -83,3 +91,49 @@ nav{
     display: flex;
     justify-content: center;
 }
+
+.freshapples{
+    background-color: #ff7878;
+    background-image: linear-gradient(315deg, #ff7878 0%, #ff0000 74%);
+    
+    color: white ;
+    font-size: 20px ;
+    font-weight: 500;
+}
+
+
+.freshbanana{
+    background: #F09819;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #EDDE5D, #F09819);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #EDDE5D, #F09819); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+color: #464A53;
+font-weight: 500;
+}
+
+.freshoranges{
+    background: #FF512F;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #F09819, #FF512F);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #F09819, #FF512F); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+color:white;
+font-weight: 500;
+}
+
+.card-body{
+    padding: 1rem !important;
+}
+
+
+.colors{
+    background: #FF512F;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #DD2476, #FF512F);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #DD2476, #FF512F); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+color:white;
+font-size: 500;
+}
+
+.card-text{
+font-size: 20px;
+}
+

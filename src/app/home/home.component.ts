@@ -13,10 +13,11 @@ import { SearchService } from '../service/search.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-public connection = false;
+public connection = true;
 succ=false
 sendFile :any
-  constructor(private api:ApiServiceService,private searchApi:SearchService, private router:Router,private _snackBar: MatSnackBar) { }
+  constructor(private api:ApiServiceService,private searchApi:SearchService, private router:Router,private _snackBar: MatSnackBar) {
+   }
 files:any
 // img='https://m3placement.com/wp-content/uploads/2021/03/image-placeholder-350x350-1.png'
 img='https://i1.wp.com/www.slntechnologies.com/wp-content/uploads/2017/08/ef3-placeholder-image.jpg?ssl=1'
@@ -46,6 +47,8 @@ onSubmit(){
       console.log('res',result)
       this.api.result.next(result);
       this.api.loading.next(false);
+
+      
     })
    this.router.navigateByUrl("/results")
   }else{
@@ -62,15 +65,18 @@ onSubmit(){
 
 
   ngOnInit(): void {
-    this.api.checkConnection().subscribe(res=>{
-      if(res.status=="success") this.connection=true;
-    })
+  
 
 
     this.searchApi.searchResult.next({});
 
     this.subs = this.api.reciever().subscribe(x => {
       this.img = x
+    })
+
+
+    this.api.connection.subscribe(res=>{
+      this.connection = res
     })
 
       
@@ -85,23 +91,6 @@ getImage(){
   return 'assets/orange.png'
 }
 
-
-store(namesUk:any){
-
-  namesUk = "pid"
-  if(this.check()){
- let data= JSON.parse(localStorage.getItem("names")!) 
-  console.log(data) 
-data.push({pid:22})
-
-localStorage.setItem("names",JSON.stringify(data))
-// for(let d of data){
-//   console.log(d,"locals")
-// }
-  }
-
-// localStorage.setItem('data', JSON.stringify(["Harry"]));
-}
 
 check(){
   return !! localStorage.getItem('data')
