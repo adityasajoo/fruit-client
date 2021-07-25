@@ -13,7 +13,7 @@ export class ResultsComponent implements OnInit {
   public result : any;
   public recipes:any;
 
-  constructor(apiService:ApiServiceService,searchService:SearchService,router:Router) { 
+  constructor(private apiService:ApiServiceService,private searchService:SearchService,router:Router) { 
     //check if data fetched
    apiService.loading.subscribe(val => val===null?router.navigateByUrl("/home"):this.isLoading=val);
 
@@ -33,6 +33,7 @@ export class ResultsComponent implements OnInit {
     apiService.result.subscribe(val=>{
       if(val.data){
         this.result = val.data;
+        console.log(val,'result')
       }
     })
   
@@ -44,6 +45,14 @@ export class ResultsComponent implements OnInit {
     //   e.returnValue = confirmationMessage; // Gecko, Trident, Chrome 34+
     //   return confirmationMessage; // Gecko, WebKit, Chrome <34
     // });
+    this.searchService.getPosition().then(pos=>
+      {
+         console.log(`Positon: ${pos.lng} ${pos.lat}`);
+         
+      })
+
+
+
   }
 
   facts= ["Apples contain antioxidants, vitamin C, fiber, and several other nutrients that may boost heart, brain, and digestive health.",
