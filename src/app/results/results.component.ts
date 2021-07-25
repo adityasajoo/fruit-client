@@ -38,7 +38,7 @@ export class ResultsComponent implements OnInit {
     })
   
   }
-
+zipcode=''
   ngOnInit(): void {
     // window.addEventListener("beforeunload", function (e) {
     //   var confirmationMessage = "\o/";
@@ -48,7 +48,16 @@ export class ResultsComponent implements OnInit {
     this.searchService.getPosition().then(pos=>
       {
          console.log(`Positon: ${pos.lng} ${pos.lat}`);
-         
+
+         let body = {
+           lat:pos.lat,
+           long:pos.lng
+         }
+         this.apiService.sendLocation(body).subscribe((res:any)=>{
+           console.log(res,"api res")
+           this.zipcode = res.zipcode
+         })
+
       })
 
 

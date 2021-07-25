@@ -57,4 +57,9 @@ public reciever():Observable<any>{
 
 
 
+public sendLocation(body:any){
+  
+  return this.http.get(`https://flask-server.loca.lt/location?lat=${body.lat}&long=${body.long}`)
+}
+
 }
