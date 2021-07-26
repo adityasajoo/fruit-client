@@ -17,6 +17,9 @@ import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 import { ResultsComponent } from './results/results.component';
 import { FormatFruitNamePipe } from './pipes/format-fruit-name.pipe';
 import { ErrorComponent } from './error/error.component';
+import { TestComponent } from './test/test.component';
+import {MatTableModule} from '@angular/material/table';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +28,8 @@ import { ErrorComponent } from './error/error.component';
     SafeHtmlPipe,
     ResultsComponent,
     FormatFruitNamePipe,
-    ErrorComponent
+    ErrorComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,
@@ -35,6 +39,7 @@ import { ErrorComponent } from './error/error.component';
     HttpClientModule,
     MatCardModule,
     MatSnackBarModule,
+    MatTableModule,
     MatExpansionModule  ],
   providers: [],
   bootstrap: [AppComponent]

@@ -4,11 +4,12 @@ import { ErrorComponent } from './error/error.component';
 import {  HomeComponent} from './home/home.component';
 
 import { ResultsComponent } from './results/results.component';
+import { TestComponent } from './test/test.component';
 
 const routes: Routes = [ {
   path: '',
   redirectTo: '/home',
-  pathMatch: 'full'
+  pathMatch: 'full',
 },{
     path: 'home',
     component: HomeComponent
@@ -16,6 +17,9 @@ const routes: Routes = [ {
 {
     path:'results',
     component:ResultsComponent
+  },{
+    path:'test',
+    component:TestComponent 
   },{
     path:'error',
     component:ErrorComponent

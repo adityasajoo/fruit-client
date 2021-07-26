@@ -14,8 +14,9 @@ const httpOptions = {
 })
 export class ApiServiceService {
   img='https://m3placement.com/wp-content/uploads/2021/03/image-placeholder-350x350-1.png'
-  // url ="http://localhost:5000"
-  url = "https://flask-server.loca.lt/"
+  //url ="http://localhost:5000"
+  //url = "https://flask-server.loca.lt/"
+  url = "  https://38a618e4b581.ngrok.io"
 
   connection = new BehaviorSubject<any>(false)
  
