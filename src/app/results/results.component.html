@@ -1,4 +1,4 @@
-<nav *ngIf="!isLoading" class="text-center my-nav py-3">AI Driven Automatic Fruit Grading</nav>
+<nav *ngIf="!isLoading" class="text-center my-nav p-3">AI Driven Automatic Fruit Grading</nav>
 
 <div class="container-fluid p-3  my-container">
 
@@ -6,43 +6,85 @@
   <div *ngIf="isLoading">
     <div class="loader mx-auto">
       <img class="d-flex mx-auto" src="assets/loader.svg" alt="">
-
-      <div class="quote text-center"><span class="did">Did you know?</span> {{getQuotes()}}</div>
+      <div class="quote  text-center">Processing.....</div>
+      <!-- <div class="quote text-center"><span class="did">Did you know?</span> {{getQuotes()}}</div>s -->
     </div>
   </div>
 
   <div *ngIf="!isLoading">
 
     <div class="main p-4" *ngIf="result.count else noFruit">
-      <div class="row ">
-        <div class="col-lg-7 col-sm-12 ">
-          <div class="input-div">
+
+      <div class="input-div">
+        <div class="row">
+
+
+          <!-- 1 -->
+          <div class="col-lg-8 col-sm-12">
+
             <div class="row">
-              <div class="col-lg-6 col-sm-12">
-                <div class="head my-2">Uploaded Image</div>
+              <div class="col-lg-4 col-sm-12 mob1">
+                <div class="head my-3">Uploaded Image</div>
                 <div class="input-img">
                   <img [src]="'data:image/jpg;base64,'+result.input_image | safeHtml" alt="err">
                 </div>
+                <!-- <button mat-raised-button class="colors" routerLink="/home"> UPLOAD NEW IMAGE</button> -->
               </div>
 
-              <div class="col-lg-6 col-sm-12 my-2">
-                <div class="predict mx-5 px-3 ">
-                  <div class="head my-3">Predicted fruits</div>
-                  <div  *ngFor="let fruit of result.fruits">
-                    <div class="fruits  my-4">{{fruit | formatFruitName}}</div>
-
-                  </div>
+              <!-- 1 -->
+              <!-- 2 -->
 
 
-                  <button mat-raised-button class="colors" routerLink="/home"> UPLOAD NEW IMAGE</button>
+              <!-- 3 -->
+
+              <div class="col-lg-4 col-sm-12  mob5">
+
+
+                <div class="head my-3">Retail Price</div>
+                <perfect-scrollbar class="predicted-fruits">
+                  <table mat-table [dataSource]="HOPCOM_DATA" class="mat-elevation-z8 predicted-table">
+
+                    <ng-container matColumnDef="fruit">
+                      <th mat-header-cell *matHeaderCellDef> Fruit </th>
+                      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                    </ng-container>
+
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="price">
+                      <th mat-header-cell *matHeaderCellDef> Price (Rs/kg) </th>
+                      <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+                    </ng-container>
+
+
+                    <tr mat-header-row *matHeaderRowDef="hopcomHeader; sticky: true"></tr>
+                    <tr mat-row *matRowDef="let row; columns: hopcomHeader;"></tr>
+                  </table>
+
+                </perfect-scrollbar>
+              </div>
+
+
+
+              <div class="map-container col-lg-4 col-sm-12 mob3">
+                <div class="h-100">
+                <div class="head my-3 ">Nearby Shops</div>
+                <div class="d-block">
+                  <iframe class="map"
+                    src="https://www.google.com/maps/embed/v1/search?key=AIzaSyDDUaeBYWZwFkITLC7ALHbYrsKHBrhTsyo&q=market+near+560056&zoom=12"
+                    allowfullscreen></iframe>
                 </div>
               </div>
+              </div>
 
-              <div class="col-lg-12 my-3 ">
+              <!-- 4 -->
+
+              <div class="col-lg-12 col-sm-12 mob2">
 
                 <div class="my-2 head">Detected Fruit</div>
-                <div class="pred-img my-3 row">
-                  <div class="col-lg-4" *ngFor="let fruit of result.predicted">
+            
+                <div class="heights my-3 row" >
+          
+                  <div class="col-lg-4 col-sm-6" *ngFor="let fruit of result.predicted">
                     <div class="card {{fruit.fruit}} my-2">
                       <img class="card-img-top" [src]="'data:image/jpg;base64,'+fruit.image | safeHtml"
                         alt="Card image cap">
@@ -51,38 +93,40 @@
                       </div>
                     </div>
                   </div>
+         
                 </div>
               </div>
 
             </div>
+            <!-- 3 -->
+
           </div>
 
 
+          <div class="col-lg-4 col-sm-12 mob6">
 
 
+            <div class="head mt-3">Popular Recipes</div>
 
 
+            <div class="row">
+              <div class="col-lg-6 col-sm-6 p-3" *ngFor="let recipe of recipes.recipes ">
+                <div class="card colors h-100">
+                  <div class="videos">
+                    <iframe [src]="recipe.youtube | safeHtml" title="YouTube video player" frameborder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowfullscreen></iframe>
+                  </div>
 
-        </div>
-        <div class="col-lg-5 col-sm-12 ">
-
-
-          <div class="head my-2">Popular Receipes</div>
-
-
-          <div class="row" *ngIf="recipes">
-            <div class="col-lg-6" *ngFor="let recipe of recipes.recipes">
-              <div class="card colors my-2">
-                <div class="videos">
-                  <iframe [src]="recipe.youtube | safeHtml" title="YouTube video player" frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
+                  <div class="card-body">
+                    <p class="card-text text-center">{{recipe.Food}}</p>
+                  </div>
                 </div>
 
-                <div class="card-body">
-                  <p class="card-text text-center">{{recipe.Food}}</p>
-                </div>
               </div>
+
+
+
 
             </div>
 
@@ -91,11 +135,14 @@
 
 
 
-
-
         </div>
+
+
+
 
       </div>
+
+
 
 
     </div>
@@ -108,7 +155,7 @@
         <div class="input-img">
           <img [src]="'data:image/jpg;base64,'+result.input_image | safeHtml" alt="err">
         </div>
-        <div class="my-2 text-white text-center">No fruits detected in the image</div>
+        <div class="my-2 quote text-center">No fruits detected in the image</div>
         <div class="btn-container">
           <button mat-raised-button class="but" routerLink="/home"> UPLOAD NEW IMAGE</button>
 

@@ -14,9 +14,9 @@ const httpOptions = {
 })
 export class ApiServiceService {
   img='https://m3placement.com/wp-content/uploads/2021/03/image-placeholder-350x350-1.png'
-  //url ="http://localhost:5000"
+  url ="http://localhost:5000"
   //url = "https://flask-server.loca.lt/"
-  url = "  https://38a618e4b581.ngrok.io"
+  // url = "  https://38a618e4b581.ngrok.io"
 
   connection = new BehaviorSubject<any>(false)
  
@@ -60,7 +60,7 @@ public reciever():Observable<any>{
 
 public sendLocation(body:any){
   
-  return this.http.get(`https://flask-server.loca.lt/location?lat=${body.lat}&long=${body.long}`)
+  return this.http.get(this.url+`/location?lat=${body.lat}&long=${body.long}`)
 }
 
 }

@@ -19,6 +19,13 @@ import { FormatFruitNamePipe } from './pipes/format-fruit-name.pipe';
 import { ErrorComponent } from './error/error.component';
 import { TestComponent } from './test/test.component';
 import {MatTableModule} from '@angular/material/table';
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
+import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+
+const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
+  suppressScrollX: true
+};
 
 @NgModule({
   declarations: [
@@ -29,7 +36,8 @@ import {MatTableModule} from '@angular/material/table';
     ResultsComponent,
     FormatFruitNamePipe,
     ErrorComponent,
-    TestComponent
+    TestComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -40,8 +48,12 @@ import {MatTableModule} from '@angular/material/table';
     MatCardModule,
     MatSnackBarModule,
     MatTableModule,
+    PerfectScrollbarModule,
     MatExpansionModule  ],
-  providers: [],
+  providers: [ {
+    provide: PERFECT_SCROLLBAR_CONFIG,
+    useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

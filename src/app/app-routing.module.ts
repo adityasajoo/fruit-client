@@ -6,6 +6,7 @@ import {  HomeComponent} from './home/home.component';
 import { ResultsComponent } from './results/results.component';
 import { TestComponent } from './test/test.component';
 
+
 const routes: Routes = [ {
   path: '',
   redirectTo: '/home',
@@ -24,7 +25,7 @@ const routes: Routes = [ {
     path:'error',
     component:ErrorComponent
   }
- 
+
 ];
 
 @NgModule({

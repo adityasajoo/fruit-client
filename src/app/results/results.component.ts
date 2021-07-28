@@ -12,19 +12,22 @@ export class ResultsComponent implements OnInit {
   public isLoading=true;
   public result : any;
   public recipes:any;
+  
 
   constructor(private apiService:ApiServiceService,private searchService:SearchService,router:Router) { 
     //check if data fetched
    apiService.loading.subscribe(val => val===null?router.navigateByUrl("/home"):this.isLoading=val);
 
    searchService.searchResult.subscribe(val=>{
+     console.log(val,'naaa')
      if(val.data){
       this.recipes = val.data;
+
+let a = val.data.hopcom.filter((item:any, index:any) => (val.data.hopcom.indexOf(item) === index) && item!=null );
+      this.HOPCOM_DATA = [...new Set(val.data.hopcom)];
+  console.log(this.HOPCOM_DATA,val.data.hopcom,"comp")
       console.log(this.recipes.recipes);
-      this.recipes.recipes.forEach((i:any) => {
-        console.log(i.youtube);
-        
-      });
+
 
      }
    })
@@ -39,6 +42,22 @@ export class ResultsComponent implements OnInit {
   
   }
 zipcode=''
+public HOPCOM_DATA: any[] = []
+
+public ELEMENT_DATA: any[] = [
+  {fruit: "Fresh Apple", calories: '89', carbs: "22.8g", protein: "1.1g",fiber:'2g'},
+  {fruit: "Fresh Apple", calories: '89', carbs: "22.8g", protein: "1.1g",fiber:'2g'},
+  {fruit: "Fresh Apple", calories: '89', carbs: "22.8g", protein: "1.1g",fiber:'2g'},
+  {fruit: "Fresh Apple", calories: '89', carbs: "22.8g", protein: "1.1g",fiber:'2g'},
+  {fruit: "Fresh Apple", calories: '89', carbs: "22.8g", protein: "1.1g",fiber:'2g'},
+  {fruit: "Fresh Apple", calories: '89', carbs: "22.8g", protein: "1.1g",fiber:'2g'},
+];
+public displayedColumns: string[] = ['fruit', 'calories', 'carbs', 'protein','fiber'];
+
+public dataSource = this.ELEMENT_DATA;
+
+maps=''
+public hopcomHeader:string[] =['fruit','price'];
   ngOnInit(): void {
     // window.addEventListener("beforeunload", function (e) {
     //   var confirmationMessage = "\o/";
@@ -56,6 +75,8 @@ zipcode=''
          this.apiService.sendLocation(body).subscribe((res:any)=>{
            console.log(res,"api res")
            this.zipcode = res.zipcode
+         //  this.maps = `https://www.google.com/maps/embed/v1/search?key=AIzaSyDDUaeBYWZwFkITLC7ALHbYrsKHBrhTsyo&q=market+near+560056&zoom=12`
+
          })
 
       })

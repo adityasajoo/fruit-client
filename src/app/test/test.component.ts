@@ -8,7 +8,12 @@ import { Component, OnInit } from '@angular/core';
 export class TestComponent implements OnInit {
 
   public ELEMENT_DATA: any[] = [
-    {fruit: "Fresh Apple", calories: '89', carbs: "22.8g", protein: "1.1g"},
+    {fruit: "Fresh Apple", calories: '89', carbs: "22.8g", protein: "1.1g",fiber:'2g'},
+    // {fruit: "Fresh Apple", calories: '89', carbs: "22.8g", protein: "1.1g",fiber:'2g'},
+    // {fruit: "Fresh Apple", calories: '89', carbs: "22.8g", protein: "1.1g",fiber:'2g'},
+    // {fruit: "Fresh Apple", calories: '89', carbs: "22.8g", protein: "1.1g",fiber:'2g'},
+    // {fruit: "Fresh Apple", calories: '89', carbs: "22.8g", protein: "1.1g",fiber:'2g'},
+    // {fruit: "Fresh Apple", calories: '89', carbs: "22.8g", protein: "1.1g",fiber:'2g'},
   ];
 
   public HOPCOM_DATA: any[] = [
@@ -18,7 +23,7 @@ export class TestComponent implements OnInit {
     {fruit: "Fresh Apple", price:"280"},
   ];
 
-  public displayedColumns: string[] = ['fruit', 'calories', 'carbs', 'protein'];
+  public displayedColumns: string[] = ['fruit', 'calories', 'carbs', 'protein','fiber'];
   public hopcomHeader:string[] =['fruit','price'];
   public dataSource = this.ELEMENT_DATA;
 

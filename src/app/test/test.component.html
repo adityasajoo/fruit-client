@@ -1,7 +1,7 @@
 <nav class="text-center my-nav py-3">AI Driven Automatic Fruit Grading</nav>
 
 
-<div class="container-fluid">
+<div class="container my-3">
   <div class="row first-row">
     <div class="input-image-container col-lg-4 col-sm-12">
       <div class="head my-2">Uploaded Image</div>
@@ -10,10 +10,13 @@
           src="https://www.healthyeating.org/images/default-source/home-0.0/nutrition-topics-2.0/general-nutrition-wellness/2-2-2-3foodgroups_fruits_detailfeature.jpg?sfvrsn=64942d53_4"
           alt="err">
       </div>
+
+      <button class="my-2" mat-raised-button>UPLOAD NEW IMAGE</button>
+
     </div>
-    <div class=" col-lg-8 col-sm-12 predicted-fruit-container">
-      <div class="head my-3 ">Predicted fruits</div>
-      <div class="predicted-fruits">
+    <div class=" col-lg-4 col-sm-12 predicted-fruit-container">
+      <div class="head my-2 ">Nutrition Table</div>
+        <perfect-scrollbar class="predicted-fruits">
 
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 predicted-table">
 
@@ -39,21 +42,39 @@
             <th mat-header-cell *matHeaderCellDef> Protein </th>
             <td mat-cell *matCellDef="let element"> {{element.protein}} </td>
           </ng-container>
+          <ng-container matColumnDef="fiber">
+            <th mat-header-cell *matHeaderCellDef> Fiber </th>
+            <td mat-cell *matCellDef="let element"> {{element.fiber}} </td>
+          </ng-container>
 
-          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
 
+      </perfect-scrollbar>
+    </div>
+
+    <div class="map-container col-lg-4">
+      <div class="head my-2 ">Nearby Grocery Stores</div>
+      <div class="d-block">
+        <iframe class="map" src="https://www.google.com/maps/embed/v1/search?key=AIzaSyDDUaeBYWZwFkITLC7ALHbYrsKHBrhTsyo
+         &q=grocery+near+560045&zoom=12" allowfullscreen></iframe>
       </div>
     </div>
-  </div>
-  <div class="row">
 
-    <div class="detected-fruit-container col-lg-8 col-sm-12">
+
+
+
+  </div>
+  <div class="d-flex">
+
+    <div class="detected-fruit-container">
       <div class="head my-3 ">Detected fruits</div>
 
       <div class="row cards">
-        <div class="col-lg-4">
+
+
+        <div class="col-lg-4" *ngFor="let item of [1]">
           <div class="card">
             <img
               src="https://www.healthyeating.org/images/default-source/home-0.0/nutrition-topics-2.0/general-nutrition-wellness/2-2-2-3foodgroups_fruits_detailfeature.jpg?sfvrsn=64942d53_4"
@@ -65,139 +86,16 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-4">
-          <div class="card">
-            <img
-              src="https://www.healthyeating.org/images/default-source/home-0.0/nutrition-topics-2.0/general-nutrition-wellness/2-2-2-3foodgroups_fruits_detailfeature.jpg?sfvrsn=64942d53_4"
-              alt="fruit-predicted" class="card-img-top">
-            <div class="card-body">
-              <p class="card-text text-center">
-                Fresh Apple
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="card">
-            <img
-              src="https://www.healthyeating.org/images/default-source/home-0.0/nutrition-topics-2.0/general-nutrition-wellness/2-2-2-3foodgroups_fruits_detailfeature.jpg?sfvrsn=64942d53_4"
-              alt="fruit-predicted" class="card-img-top">
-            <div class="card-body">
-              <p class="card-text text-center">
-                Fresh Apple
-              </p>
-            </div>
-          </div>
-        </div>
+
+
+
 
       </div>
 
     </div>
-    <div class="map-container col-lg-4 col-sm-12">
-      <div class="head my-3 ">Nearby Grocery Stores</div>
 
-      <iframe class="map" frameborder="0" style="border:10px" src="https://www.google.com/maps/embed/v1/search?key=AIzaSyDDUaeBYWZwFkITLC7ALHbYrsKHBrhTsyo
-&q=grocery+near+560045&zoom=12" allowfullscreen></iframe>
-    </div>
-  </div>
-  <div class="row third-row">
-    <div class="recipies-container col-lg-8 col-sm-12">
-      <div class="head my-3">Popular Recipies</div>
-
-      <div class="row">
-        <div class="col-lg-3 col-sm-6">
-          <div class="card my-2 ">
-            <iframe src="https://www.youtube.com/embed/_y7kI4gVO6E" title="YouTube video player" frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen></iframe>
-
-            <div class="card-body">
-              <p class="card-text text-center">Apple Alwa</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-sm-6">
-          <div class="card my-2 ">
-            <iframe src="https://www.youtube.com/embed/_y7kI4gVO6E" title="YouTube video player" frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen></iframe>
-
-            <div class="card-body">
-              <p class="card-text text-center">Apple Alwa</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-sm-6">
-          <div class="card my-2 ">
-            <iframe src="https://www.youtube.com/embed/_y7kI4gVO6E" title="YouTube video player" frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen></iframe>
-
-            <div class="card-body">
-              <p class="card-text text-center">Apple Alwa</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-sm-6">
-          <div class="card my-2 ">
-            <iframe src="https://www.youtube.com/embed/_y7kI4gVO6E" title="YouTube video player" frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen></iframe>
-
-            <div class="card-body">
-              <p class="card-text text-center">Apple Alwa</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-sm-6">
-          <div class="card my-2 ">
-            <iframe src="https://www.youtube.com/embed/_y7kI4gVO6E" title="YouTube video player" frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen></iframe>
-
-            <div class="card-body">
-              <p class="card-text text-center">Apple Alwa</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-sm-6">
-          <div class="card my-2 ">
-            <iframe src="https://www.youtube.com/embed/_y7kI4gVO6E" title="YouTube video player" frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen></iframe>
-
-            <div class="card-body">
-              <p class="card-text text-center">Apple Alwa</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-sm-6">
-          <div class="card my-2 ">
-            <iframe src="https://www.youtube.com/embed/_y7kI4gVO6E" title="YouTube video player" frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen></iframe>
-
-            <div class="card-body">
-              <p class="card-text text-center">Apple Alwa</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-sm-6">
-          <div class="card my-2 ">
-            <iframe src="https://www.youtube.com/embed/_y7kI4gVO6E" title="YouTube video player" frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen></iframe>
-
-            <div class="card-body">
-              <p class="card-text text-center">Apple Alwa</p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
     <div class="hopcom-container col-lg-4 col-sm-12">
-      <div class="head my-3">Hopcom Rates<span class="hopcom-span">Last Refreshed:26-07-2021</span> </div>
+      <div class="head my-2">Hopcom Rates<span class="hopcom-span">Last Refreshed:26-07-2021</span> </div>
 
       <table mat-table [dataSource]="HOPCOM_DATA" class="mat-elevation-z8 predicted-table">
 
@@ -208,7 +106,7 @@
 
         <!-- Name Column -->
         <ng-container matColumnDef="price">
-          <th mat-header-cell *matHeaderCellDef> Calories </th>
+          <th mat-header-cell *matHeaderCellDef> Prices </th>
           <td mat-cell *matCellDef="let element"> {{element.price}} </td>
         </ng-container>
 
@@ -219,6 +117,31 @@
     </div>
 
   </div>
+
+
+  <div class="head my-3">Popular Recipies</div>
+
+  <div class="row">
+    <div class="col-lg-3 col-sm-6" *ngFor="let item of [1,2,3,4,5,6,7]">
+      <div class="card my-2 ">
+        <iframe src="https://www.youtube.com/embed/_y7kI4gVO6E" title="YouTube video player" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
+
+        <div class="card-body">
+          <p class="card-text text-center">Apple Alwa</p>
+        </div>
+      </div>
+    </div>
+
+
+
+
+  </div>
+
+
+
+
 
 
 </div>
