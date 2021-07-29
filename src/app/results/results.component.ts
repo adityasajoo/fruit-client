@@ -12,7 +12,9 @@ export class ResultsComponent implements OnInit {
   public isLoading=true;
   public result : any;
   public recipes:any;
-  
+  public onlyRotten:any = false;
+
+
 
   constructor(private apiService:ApiServiceService,private searchService:SearchService,router:Router) { 
     //check if data fetched
@@ -23,10 +25,10 @@ export class ResultsComponent implements OnInit {
      if(val.data){
       this.recipes = val.data;
 
-let a = val.data.hopcom.filter((item:any, index:any) => (val.data.hopcom.indexOf(item) === index) && item!=null );
-      this.HOPCOM_DATA = [...new Set(val.data.hopcom)];
-  console.log(this.HOPCOM_DATA,val.data.hopcom,"comp")
-      console.log(this.recipes.recipes);
+let a = val.data.hopcom.filter((item:any, index:any) => (item!=null ));
+      // this.HOPCOM_DATA = [...new Set(val.data.hopcom)];
+       this.HOPCOM_DATA = a;
+      console.log("DATA : ",this.HOPCOM_DATA);
 
 
      }
@@ -36,7 +38,18 @@ let a = val.data.hopcom.filter((item:any, index:any) => (val.data.hopcom.indexOf
     apiService.result.subscribe(val=>{
       if(val.data){
         this.result = val.data;
-        console.log(val,'result')
+        let rotten=0;
+        let fresh = 0;
+        this.result.predicted.forEach((fruit:any)=>{
+          console.log(fruit.rotten);
+          console.log(typeof (fruit.rotten));
+          if(fruit.rotten) rotten+=1;
+          else fresh+=1;
+        })
+        if(fresh == 0 && rotten >0){
+          this.onlyRotten = true;
+        }else this.onlyRotten = false;
+        
       }
     })
   
@@ -59,11 +72,11 @@ public dataSource = this.ELEMENT_DATA;
 maps=''
 public hopcomHeader:string[] =['fruit','price'];
   ngOnInit(): void {
-    // window.addEventListener("beforeunload", function (e) {
-    //   var confirmationMessage = "\o/";
-    //   e.returnValue = confirmationMessage; // Gecko, Trident, Chrome 34+
-    //   return confirmationMessage; // Gecko, WebKit, Chrome <34
-    // });
+    window.addEventListener("beforeunload", function (e) {
+      var confirmationMessage = "\o/";
+      e.returnValue = confirmationMessage; // Gecko, Trident, Chrome 34+
+      return confirmationMessage; // Gecko, WebKit, Chrome <34
+    });
     this.searchService.getPosition().then(pos=>
       {
          console.log(`Positon: ${pos.lng} ${pos.lat}`);

@@ -75,9 +75,9 @@ onSubmit(){
     })
 
 
-    this.api.connection.subscribe(res=>{
-      this.connection = res
-    })
+    // this.api.connection.subscribe(res=>{
+    //   this.connection = res
+    // })
 
       
   }

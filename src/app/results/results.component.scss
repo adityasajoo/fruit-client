@@ -54,7 +54,9 @@ height: 150px !important;
 
 .fruits{
     font-size: 22px;
-    color: linear-gradient(315deg, #ff7878 0%, #ff0000 74%);
+    // color: linear-gradient(315deg, #ff7878 0%, #ff0000 74%);
+    background-color: rgba($color: #000000, $alpha: .85);
+
     font-weight: 600;
     
 }
@@ -139,10 +141,11 @@ font-weight: 500;
 
 
 .colors{
-    background: #FF512F;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #DD2476, #FF512F);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #DD2476, #FF512F); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    
+    // background: #FF512F;  /* fallback for old browsers */
+    // background: -webkit-linear-gradient(to right, #DD2476, #FF512F);  /* Chrome 10-25, Safari 5.1-6 */
+    // background: linear-gradient(to right, #DD2476, #FF512F); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-color: rgba($color: #000000, $alpha: .85);
+
 color:white;
 font-size: 500;
 }
@@ -206,7 +209,8 @@ overflow-y: scroll;
         background: #f1f1f1;
       }
       
-      /* Handle */
+      /* Handle *
+      /
       ::-webkit-scrollbar-thumb {
         background: #888;
       }
@@ -214,6 +218,10 @@ overflow-y: scroll;
       /* Handle on hover */
       ::-webkit-scrollbar-thumb:hover {
         background: #555;
+      }
+
+      .mobile-btn{
+          display: block;
       }
     
     
@@ -240,5 +248,13 @@ overflow-y: scroll;
 }
 .mob6{
     order: 6;
+}
+
+.mobile-btn{
+    display: none;
+}
+
+.mobile-nav{
+    text-align: center;
 }
   }

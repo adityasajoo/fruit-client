@@ -30,7 +30,9 @@ export class SearchService {
         this.fruits = val.data.fruits;
         //for recipies
         let str = '';
-        this.fruits.forEach(item =>
+        let arr = [...new Set(val.data.fruits)];
+        console.log(arr);
+        arr.forEach(item =>
           str = str + 'fruits=' + mapFruit(item) + '&'
         )
         this.searchRecipes(str).subscribe(val => {

@@ -1,4 +1,9 @@
-<nav *ngIf="!isLoading" class="text-center my-nav p-3">AI Driven Automatic Fruit Grading</nav>
+<nav *ngIf="!isLoading" class=" my-nav p-3 d-flex">
+ <div class="mx-auto mobile-nav">
+  AI Driven Automatic Fruit Grading 
+ </div>
+  <button mat-raised-button class="colors float-right mobile-btn" routerLink="/home"> UPLOAD NEW IMAGE</button>
+</nav>
 
 <div class="container-fluid p-3  my-container">
 
@@ -37,7 +42,7 @@
 
               <!-- 3 -->
 
-              <div class="col-lg-4 col-sm-12  mob5">
+              <div class="col-lg-4 col-sm-12  mob5 " *ngIf="!onlyRotten">
 
 
                 <div class="head my-3">Retail Price</div>
@@ -84,12 +89,14 @@
             
                 <div class="heights my-3 row" >
           
-                  <div class="col-lg-4 col-sm-6" *ngFor="let fruit of result.predicted">
+                  <div class="col-lg-3 col-sm-6" *ngFor="let fruit of result.predicted">
                     <div class="card {{fruit.fruit}} my-2">
                       <img class="card-img-top" [src]="'data:image/jpg;base64,'+fruit.image | safeHtml"
                         alt="Card image cap">
-                      <div class="card-body">
-                        <p class="card-text text-center">{{fruit.fruit|formatFruitName}}</p>
+                      <div class="card-body p-1">
+                        <p class="card-text ">Fruit : {{fruit.fruit|formatFruitName}}</p>
+                        <p class="card-text ">Sub Category : {{fruit.sub_class}}</p>
+                        <p class="card-text ">Grade : {{fruit.grade}}</p>
                       </div>
                     </div>
                   </div>
@@ -103,7 +110,7 @@
           </div>
 
 
-          <div class="col-lg-4 col-sm-12 mob6">
+          <div class="col-lg-4 col-sm-12 mob6" *ngIf="!onlyRotten">
 
 
             <div class="head mt-3">Popular Recipes</div>

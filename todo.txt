@@ -1,0 +1,4 @@
+1. Add "Upload Again" Button.
+2. Change Card Color.
+3. Change color of button, In no fruit detected page.
+
