@@ -88,7 +88,7 @@ public hopcomHeader:string[] =['fruit','price'];
          this.apiService.sendLocation(body).subscribe((res:any)=>{
            console.log(res,"api res")
            this.zipcode = res.zipcode
-         //  this.maps = `https://www.google.com/maps/embed/v1/search?key=AIzaSyDDUaeBYWZwFkITLC7ALHbYrsKHBrhTsyo&q=market+near+560056&zoom=12`
+           this.maps = `https://www.google.com/maps/embed/v1/search?key=AIzaSyDDUaeBYWZwFkITLC7ALHbYrsKHBrhTsyo&q=market+near+${this.zipcode}&zoom=12`
 
          })
 

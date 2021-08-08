@@ -75,7 +75,7 @@
                 <div class="head my-3 ">Nearby Shops</div>
                 <div class="d-block">
                   <iframe class="map"
-                    src="https://www.google.com/maps/embed/v1/search?key=AIzaSyDDUaeBYWZwFkITLC7ALHbYrsKHBrhTsyo&q=market+near+560056&zoom=12"
+                    [src]="maps | safeHtml"
                     allowfullscreen></iframe>
                 </div>
               </div>
@@ -157,16 +157,13 @@
 
   <ng-template #noFruit>
     <div class="row no-fruit-container">
-      <div class="col-lg-3">
-        <div class="head my-2">Uploaded Image</div>
-        <div class="input-img">
-          <img [src]="'data:image/jpg;base64,'+result.input_image | safeHtml" alt="err">
+      <div class=" mx-auto">
+        <div class="head my-2 text-center">Uploaded Image</div>
+        <div class="input-img d-flex">
+          <img class="mx-auto"  [src]="'data:image/jpg;base64,'+result.input_image | safeHtml" alt="err">
         </div>
         <div class="my-2 quote text-center">No fruits detected in the image</div>
-        <div class="btn-container">
-          <button mat-raised-button class="but" routerLink="/home"> UPLOAD NEW IMAGE</button>
-
-        </div>
+ 
 
       </div>
     </div>
@@ -176,5 +173,3 @@
 
 
 
-<!-- <iframe width="350" height="350" frameborder="0" style="border:10px" src="https://www.google.com/maps/embed/v1/search?key=AIzaSyDDUaeBYWZwFkITLC7ALHbYrsKHBrhTsyo
-&q=grocery+near+{{zipcode}}&zoom=10" allowfullscreen> -->
